@@ -19,13 +19,7 @@ import {
   selectAllProducts,
   fetchAllProductAsync,
   fetchProductsByFiltersAsync,
-  selectCategories,
-  selectBrands,
-  fetchBrandsAsync,
-  fetchCategoriesAsync,
-  selectTotalItems,
-} from "../productSlice";
-import Pagination from "../../../common/Pagination";
+} from "../../product/productSlice";
 
 const sortOptions = [
   { name: "Best Rating", sort: "rating", order: "desc", current: false },
@@ -33,82 +27,64 @@ const sortOptions = [
   { name: "Price: High to Low", sort: "price", order: "desc", current: false },
 ];
 
+const filters = [
+  {
+    id: "brand",
+    name: "Brands",
+    options: [
+      { value: "white", label: "White", checked: false },
+      { value: "beige", label: "Beige", checked: false },
+      { value: "blue", label: "Blue", checked: true },
+      { value: "brown", label: "Brown", checked: false },
+      { value: "green", label: "Green", checked: false },
+      { value: "purple", label: "Purple", checked: false },
+    ],
+  },
+  {
+    id: "category",
+    name: "Category",
+    options: [
+      { value: "smartphones", label: "smartphones", checked: true },
+      { value: "laptops", label: "laptops", checked: false },
+      { value: "fragrances", label: "fragrances", checked: false },
+      { value: "skincare", label: "skincare", checked: false },
+      { value: "groceries", label: "groceries", checked: false },
+      { value: "home-decoration", label: "home decoration", checked: false },
+    ],
+  },
+];
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function ProductList() {
+export default function AdminProductList() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const dispatch = useDispatch();
   const products = useSelector(selectAllProducts);
-  const brands = useSelector(selectBrands);
-  const categories = useSelector(selectCategories);
-  const totalItems = useSelector(selectTotalItems);
   const [filter, setFilter] = useState({});
   const [page, setPage] = useState(1);
-  const [sort, setSort] = useState({});
 
   const ITEMS_PER_PAGE = 10; // Items per page
   const TOTAL_PRODUCTS = products.length; // Total number of products
   const totalPages = Math.ceil(TOTAL_PRODUCTS / ITEMS_PER_PAGE);
 
-  const filters = [
-    {
-      id: "category",
-      name: "Category",
-      options: categories,
-    },
-    {
-      id: "brand",
-      name: "Brands",
-      options: brands,
-    },
-  ];
-
   const handleFilter = (e, section, option) => {
-    console.log(e.target.checked);
-    const newFilter = { ...filter };
-    if (e.target.checked) {
-      if (newFilter[section.id]) {
-        newFilter[section.id].push(option.value);
-      } else {
-        newFilter[section.id] = [option.value];
-      }
-    } else {
-      const index = newFilter[section.id].findIndex(
-        (el) => el === option.value
-      );
-      newFilter[section.id].splice(index, 1);
-    }
-    console.log({ newFilter });
-
+    const newFilter = { ...filter, [section.id]: option.value };
     setFilter(newFilter);
+    dispatch(fetchProductsByFiltersAsync(filter));
+    console.log(section.id, option.value);
   };
 
   const handleSort = (e, option) => {
-    const sort = { _sort: option.sort, _order: option.order };
-    console.log({ sort });
-    setSort(sort);
+    const newFilter = { ...filter, _sort: option.sort, _order: option.order };
+    setFilter(newFilter);
+    dispatch(fetchProductsByFiltersAsync(filter));
   };
 
-  const handlePage = (page) => {
-    console.log({ page });
-    setPage(page);
+  const handlePage = (newPage) => {
+    setPage(newPage);
   };
-
-  useEffect(() => {
-    setPage(1);
-  }, [totalItems, sort]);
-
-  useEffect(() => {
-    const pagination = { _page: page, _limit: ITEMS_PER_PAGE };
-    dispatch(fetchProductsByFiltersAsync({ filter, sort, pagination }));
-  }, [dispatch, filter, sort, page]);
-
-  useEffect(() => {
-    dispatch(fetchBrandsAsync());
-    dispatch(fetchCategoriesAsync());
-  }, []);
 
   // Calculate the start and end index for the current page
   const startIndex = (page - 1) * ITEMS_PER_PAGE;
@@ -124,7 +100,7 @@ export default function ProductList() {
     <div className="bg-white">
       <div>
         {/* Mobile filter dialog */}
-        <Transition.Root handleFilter={handleFilter} show={mobileFiltersOpen} as={Fragment}>
+        <Transition.Root show={mobileFiltersOpen} as={Fragment}>
           <Dialog
             as="div"
             className="relative z-40 lg:hidden"
@@ -381,48 +357,71 @@ export default function ProductList() {
                       Products List
                     </h2>
 
+                    <div className="mt-5">
+                      <Link
+                        to={"/admin/product-form"}
+                        className="rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                      >
+                        Add New Product
+                      </Link>
+                    </div>
+
                     <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                       {products.map((product) => (
-                        <Link to={`/product/${product.id}`} key={product.id}>
-                          <div className="group relative">
-                            <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-60">
-                              <img
-                                src={product.thumbnail}
-                                alt={product.title}
-                                className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-                              />
-                            </div>
-                            <div className="mt-4 flex justify-between">
-                              <div>
-                                <h3 className="text-sm text-gray-700">
-                                  <span
-                                    aria-hidden="true"
-                                    className="absolute inset-0"
-                                  />
-                                  {product.title}
-                                </h3>
-                                <p className="mt-1 text-sm text-gray-500">
-                                  <StarIcon className="w-6 h-6 inline" />
-                                  <span className=" align-bottom">
-                                    {product.rating}
-                                  </span>
-                                </p>
+                        <div>
+                          <Link
+                            to={`/admin/product/${product.id}`}
+                            key={product.id}
+                          >
+                            <div className="group relative">
+                              <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-60">
+                                <img
+                                  src={product.thumbnail}
+                                  alt={product.title}
+                                  className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                                />
                               </div>
-                              <div>
-                                <p className="text-sm line-through font-medium text-gray-500">
-                                  ${product.price}
-                                </p>
-                                <p className="text-sm font-medium text-gray-900">
-                                  $
-                                  {Math.round(
-                                    product.price *
-                                      (1 - product.discountPercentage / 100)
-                                  )}
-                                </p>
+                              <div className="mt-4 flex justify-between">
+                                <div>
+                                  <h3 className="text-sm text-gray-700">
+                                    <span
+                                      aria-hidden="true"
+                                      className="absolute inset-0"
+                                    />
+                                    {product.title}
+                                  </h3>
+                                  <p className="mt-1 text-sm text-gray-500">
+                                    <StarIcon className="w-6 h-6 inline" />
+                                    <span className=" align-bottom">
+                                      {product.rating}
+                                    </span>
+                                  </p>
+                                </div>
+                                <div>
+                                  <p className="text-sm line-through font-medium text-gray-500">
+                                    ${product.price}
+                                  </p>
+                                  <p className="text-sm font-medium text-gray-900">
+                                    $
+                                    {Math.round(
+                                      product.price *
+                                        (1 - product.discountPercentage / 100)
+                                    )}
+                                  </p>
+                                </div>
                               </div>
                             </div>
+                          </Link>
+                          {/* Admin Extra Feature */}
+                          <div className="mt-5">
+                            <Link
+                              to={`/admin/product-form/edit/${product.id}`} 
+                              className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                            >
+                              Edit Product
+                            </Link>
                           </div>
-                        </Link>
+                        </div>
                       ))}
                     </div>
                   </div>
@@ -433,12 +432,90 @@ export default function ProductList() {
           </section>
 
           {/* Pagination */}
-          <Pagination
-            page={page}
-            setPage={setPage}
-            handlePage={handlePage}
-            totalItems={totalItems}
-          ></Pagination>
+          <div className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
+            <div className="flex flex-1 justify-between sm:hidden">
+              <a
+                href="#"
+                onClick={() => handlePage(page - 1)}
+                className={`${
+                  page === 1
+                    ? "pointer-events-none text-gray-300"
+                    : "text-gray-700 hover:bg-gray-50"
+                } relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700`}
+              >
+                Previous
+              </a>
+              <a
+                href="#"
+                onClick={() => handlePage(page + 1)}
+                className={`${
+                  page === totalPages
+                    ? "pointer-events-none text-gray-300"
+                    : "text-gray-700 hover:bg-gray-50"
+                } relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700`}
+              >
+                Next
+              </a>
+            </div>
+            <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
+              <div>
+                <p className="text-sm text-gray-700">
+                  Showing <span className="font-medium">{startIndex + 1}</span>{" "}
+                  to{" "}
+                  <span className="font-medium">
+                    {Math.min(endIndex, TOTAL_PRODUCTS)}
+                  </span>{" "}
+                  of <span className="font-medium">{TOTAL_PRODUCTS}</span>{" "}
+                  results
+                </p>
+              </div>
+              <div>
+                <nav
+                  className="isolate inline-flex -space-x-px rounded-md shadow-sm"
+                  aria-label="Pagination"
+                >
+                  <a
+                    href="#"
+                    onClick={() => handlePage(page - 1)}
+                    className={`${
+                      page === 1
+                        ? "pointer-events-none text-gray-300"
+                        : "text-gray-400 hover:bg-gray-50"
+                    } relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 focus:outline-offset-0`}
+                  >
+                    <span className="sr-only">Previous</span>
+                    <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
+                  </a>
+                  {Array.from({ length: totalPages }, (_, index) => (
+                    <a
+                      key={index}
+                      href="#"
+                      onClick={() => handlePage(index + 1)}
+                      className={`${
+                        index + 1 === page
+                          ? "relative z-10 inline-flex items-center bg-indigo-600 text-white"
+                          : "text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                      } px-4 py-2 text-sm font-semibold focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600`}
+                    >
+                      {index + 1}
+                    </a>
+                  ))}
+                  <a
+                    href="#"
+                    onClick={() => handlePage(page + 1)}
+                    className={`${
+                      page === totalPages
+                        ? "pointer-events-none text-gray-300"
+                        : "text-gray-400 hover-bg-gray-50"
+                    } relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 focus:outline-offset-0`}
+                  >
+                    <span className="sr-only">Next</span>
+                    <ChevronRightIcon className="h-5 w-5" aria-hidden="true" />
+                  </a>
+                </nav>
+              </div>
+            </div>
+          </div>
         </main>
       </div>
     </div>

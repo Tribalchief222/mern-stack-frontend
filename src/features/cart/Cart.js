@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectItems,
   fetchItemsByUserIdAsync,
   deleteItemFromCartAsync,
+  updateCartAsync,
 } from "./cartSlice";
 import { selectLoggedInUser } from "../auth/authSlice";
 
@@ -26,11 +27,23 @@ export function Cart() {
   };
 
   // Calculate the subtotal price
-  const subtotal = cartItems.reduce((total, product) => {
-    return total + parseFloat(product.price); // Assuming price is in dollars and cents format
-  }, 0);
+  const subtotal = cartItems.reduce(
+    (amount, item) => item.product.price * item.quantity + amount,
+    0
+  );  
+
+  const totalItems = cartItems.reduce(
+    (total, item) => item.quantity + total, 0
+  );
+
+  const handleQuantity = (e, item) => {
+    dispatch(updateCartAsync({id:item.id, quantity: +e.target.value }));
+  };
+  
 
   return (
+    <>
+    {!cartItems.length && <Navigate to={'/'} replace={true}></Navigate>}
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <h2 className="text-4xl font-bold">Your Cart</h2>
       <div className="mt-8">
@@ -40,8 +53,8 @@ export function Cart() {
               <li key={product.id} className="flex py-6">
                 <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                   <img
-                    src={product.thumbnail}
-                    alt={product.title}
+                    src={product.product.thumbnail}
+                    alt={product.product.title}
                     className="h-full w-full object-cover object-center"
                   />
                 </div>
@@ -50,9 +63,9 @@ export function Cart() {
                   <div>
                     <div className="flex justify-between text-base font-medium text-gray-900">
                       <h3>
-                        <a href={product.href}>{product.title}</a>
+                        <a href={product.product.href}>{product.title}</a>
                       </h3>
-                      <p className="ml-4">{product.price}</p>
+                      <p className="ml-4">{product.product.price}</p>
                     </div>
                     <p className="mt-1 text-sm text-gray-500">
                       {product.color}
@@ -61,9 +74,15 @@ export function Cart() {
                   <div className="flex flex-1 items-end justify-between text-sm">
                     <p className="text-gray-500">
                       Qty
-                      <select className="ml-4">
+                      <select onChange={(e) => handleQuantity(e, product)} className="ml-4">
                         <option value="1">1</option>
                         <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
                       </select>
                     </p>
 
@@ -85,9 +104,13 @@ export function Cart() {
       </div>
 
       <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
-        <div className="flex justify-between text-base font-medium text-gray-900">
+        <div className="flex my-2 justify-between text-base font-medium text-gray-900">
           <p>Subtotal</p>
           <p>${subtotal.toFixed(2)}</p>
+        </div>
+        <div className="flex my-2 justify-between text-base font-medium text-gray-900">
+          <p>Total Items in Cart</p>
+          <p>{totalItems} items</p>
         </div>
         <p className="mt-0.5 text-sm text-gray-500">
           Shipping and taxes calculated at checkout.
@@ -116,5 +139,6 @@ export function Cart() {
         </div>
       </div>
     </div>
+    </>
   );
 }

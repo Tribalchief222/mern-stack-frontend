@@ -2,11 +2,11 @@
   "products": [
     {
       "id": 1,
-      "title": "iPhone 9",
+      "title": "iPhone 12",
       "description": "An apple mobile which is nothing like apple",
-      "price": 549,
+      "price": 54900,
       "discountPercentage": 12.96,
-      "rating": 4.69,
+      "rating": 0,
       "stock": 94,
       "brand": "Apple",
       "category": "smartphones",
@@ -15,7 +15,6 @@
         "https://i.dummyjson.com/data/products/1/1.jpg",
         "https://i.dummyjson.com/data/products/1/2.jpg",
         "https://i.dummyjson.com/data/products/1/3.jpg",
-        "https://i.dummyjson.com/data/products/1/4.jpg",
         "https://i.dummyjson.com/data/products/1/thumbnail.jpg"
       ]
     },
@@ -23,9 +22,9 @@
       "id": 2,
       "title": "iPhone X",
       "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
-      "price": 899,
+      "price": 89900,
       "discountPercentage": 17.94,
-      "rating": 4.44,
+      "rating": 0,
       "stock": 34,
       "brand": "Apple",
       "category": "smartphones",
@@ -67,7 +66,6 @@
         "https://i.dummyjson.com/data/products/4/1.jpg",
         "https://i.dummyjson.com/data/products/4/2.jpg",
         "https://i.dummyjson.com/data/products/4/3.jpg",
-        "https://i.dummyjson.com/data/products/4/4.jpg",
         "https://i.dummyjson.com/data/products/4/thumbnail.jpg"
       ]
     },
@@ -128,7 +126,7 @@
       "id": 8,
       "title": "Microsoft Surface Laptop 4",
       "description": "Style and speed. Stand out on HD video calls backed by Studio Mics. Capture ideas on the vibrant touchscreen.",
-      "price": 1499,
+      "price": 14990,
       "discountPercentage": 10.23,
       "rating": 4.43,
       "stock": 68,
@@ -139,7 +137,6 @@
         "https://i.dummyjson.com/data/products/8/1.jpg",
         "https://i.dummyjson.com/data/products/8/2.jpg",
         "https://i.dummyjson.com/data/products/8/3.jpg",
-        "https://i.dummyjson.com/data/products/8/4.jpg",
         "https://i.dummyjson.com/data/products/8/thumbnail.jpg"
       ]
     },
@@ -551,239 +548,924 @@
         "https://i.dummyjson.com/data/products/30/3.jpg",
         "https://i.dummyjson.com/data/products/30/thumbnail.jpg"
       ]
+    },
+    {
+      "title": "vivo v29 pro",
+      "description": "dms dsdnma dsad",
+      "brand": "OPPO",
+      "category": "smartphones",
+      "price": "90000",
+      "discountPercentage": "9",
+      "stock": "89",
+      "thumbnail": "https://cdn.pixabay.com/photo/2023/10/16/10/51/fox-8318961_640.png",
+      "images": [
+        "https://cdn.pixabay.com/photo/2023/10/16/10/51/fox-8318961_640.png",
+        "https://cdn.pixabay.com/photo/2023/10/16/10/51/fox-8318961_640.png",
+        "https://cdn.pixabay.com/photo/2023/10/16/10/51/fox-8318961_640.png",
+        "https://cdn.pixabay.com/photo/2023/10/16/10/51/fox-8318961_640.png"
+      ],
+      "rating": 0,
+      "id": 31
+    },
+    {
+      "title": "OPPOF19",
+      "description": "OPPO F19 is officially announced on April 2021.",
+      "price": 280,
+      "discountPercentage": 17.91,
+      "thumbnail": "https://i.dummyjson.com/data/products/4/thumbnail.jpg",
+      "stock": 123,
+      "brand": "OPPO",
+      "category": "smartphones",
+      "images": [
+        "https://i.dummyjson.com/data/products/4/1.jpg",
+        "https://i.dummyjson.com/data/products/4/2.jpg",
+        "https://i.dummyjson.com/data/products/4/3.jpg",
+        "https://i.dummyjson.com/data/products/4/thumbnail.jpg"
+      ],
+      "id": 32
     }
   ],
   "users": [
     {
-      "email": "kjaskaj@gnail.com",
-      "password": "@R123gggggg",
+      "email": "akshat123@gmail.com",
+      "password": "@Roman222222",
+      "addresses": [
+        {
+          "name": "akshat",
+          "email": "ak@gmail.com",
+          "phone": "901920090",
+          "street": "b-3qwww steert 56",
+          "city": "Ontario",
+          "state": "Canda",
+          "pinCode": "442422"
+        }
+      ],
       "id": 1
     },
     {
-      "email": "ak@gmail.com",
+      "email": "akshat123@gmail.com",
       "password": "@Roman123",
+      "addresses": [],
+      "role": "admin",
       "id": 2
     },
     {
-      "email": "sadas@gmail.com",
-      "password": "@QWEqwe123",
+      "email": "ak@gmail.com",
+      "password": "@Ejkla12A",
+      "addresses": [
+        {
+          "name": "akshat",
+          "email": "ak@gmail.com",
+          "phone": "901920090",
+          "street": "b-3qwww steert 56",
+          "city": "Ontario",
+          "state": "Canda",
+          "pinCode": "442422"
+        }
+      ],
+      "role": "admin",
       "id": 3
     },
     {
       "email": "ak@gmail.com",
-      "password": "AAS@43434fdfd",
+      "password": "$REEasdasa8989",
+      "addresses": [],
+      "role": "admin",
       "id": 4
     },
     {
-      "email": "kjassdckaj@gnail.com",
-      "password": "S#123132fewferf",
+      "email": "ak@gmail.com",
+      "password": "Q*9090jhAhjhj",
+      "addresses": [],
+      "role": "admin",
       "id": 5
     },
     {
-      "email": "akewerw@gmail.com",
-      "password": "S@#@23423rewfsef",
+      "email": "ak@gmail.com",
+      "password": "@Eyuywueywqe8787we",
+      "addresses": [],
+      "role": "admin",
       "id": 6
     },
     {
-      "email": "aedwekjaskaj@gnail.com",
-      "password": "AS@#$w3534res",
+      "email": "kjaskaj@gnail.com",
+      "password": "@E9998eefff",
+      "addresses": [],
+      "role": "admin",
       "id": 7
     },
     {
-      "email": "akasdqwqeq@gmail.com",
-      "password": "S@#awe3442rwer",
+      "email": "ak@gmail.com",
+      "password": "@E9090weweqw",
+      "addresses": [],
+      "role": "admin",
       "id": 8
     },
     {
-      "email": "akdceshat123@gmail.com",
-      "password": "W#@233erfd",
+      "email": "ak@gmail.com",
+      "password": "A@90909dssds",
+      "addresses": [],
+      "role": "admin",
       "id": 9
     },
     {
-      "email": "aweeqqwak@gmail.com",
-      "password": "S@3242342wrerwrw",
+      "email": "akshat123@gmail.com",
+      "password": "@Efosifoseifs90909sdfdsd",
+      "addresses": [],
+      "role": "admin",
       "id": 10
     },
     {
-      "email": "kjasketyadsuaj@gnail.com",
-      "password": "W344DSSRGDTFHHGDW32sdfs",
+      "email": "ak@gmail.com",
+      "password": "W)090990dfsds",
+      "addresses": [],
+      "role": "admin",
       "id": 11
     },
     {
-      "email": "kjaskwqergthyaj@gnail.com",
-      "password": "A@234243rewrwer",
+      "email": "akshat123@gmail.com",
+      "password": "A)0s0d0asd0a9s0dasd9as",
+      "addresses": [],
+      "role": "admin",
       "id": 12
     },
     {
-      "email": "aesrdtfygjukhjk@gmail.com",
-      "password": "S@324234dasdasda",
+      "email": "ak@gmail.com",
+      "password": "W)oifsod0A",
+      "addresses": [],
+      "role": "admin",
       "id": 13
     },
     {
-      "email": "aksaASDFGHJKhat123@gmail.com",
-      "password": "A@3434deewerwe",
+      "email": "ak@gmail.com",
+      "password": "HHJ)))kdsa0900990sa9d",
+      "addresses": [],
+      "role": "admin",
       "id": 14
     },
     {
-      "email": "adaAAS@gmail.com",
-      "password": "A@234325rwefsdcfeafsd",
+      "email": "ak@gmail.com",
+      "password": "OPPO)000sdas",
+      "addresses": [],
+      "role": "admin",
       "id": 15
     },
     {
-      "email": "asdsadasdak@gmail.com",
-      "password": "@E342343rewfds",
+      "email": "akshat123@gmail.com",
+      "password": "KLLK))0ods0fs9f9sfsdfsa",
+      "addresses": [],
+      "role": "admin",
       "id": 16
     },
     {
-      "email": "kasfdghjkljaskaj@gnail.com",
-      "password": "@E23423rwefsdr43re",
+      "email": "ak@gmail.com",
+      "password": "WEOI)0090ds",
+      "addresses": [],
+      "role": "admin",
       "id": 17
     },
     {
-      "email": "akshat1WAFESGRDHGYHJK23@gmail.com",
-      "password": "ASW@@r3wrwefdser32",
+      "email": "kjaskaj@gnail.com",
+      "password": "SS))SLlklklsdkadA)000",
+      "addresses": [],
+      "role": "admin",
       "id": 18
+    },
+    {
+      "email": "akshat123@gmail.com",
+      "password": "KLKKL)))00000dfssds",
+      "addresses": [],
+      "role": "admin",
+      "id": 19
+    },
+    {
+      "email": "akshat123@gmail.com",
+      "password": "jkdsjkSJ))LLkl000",
+      "addresses": [],
+      "role": "admin",
+      "id": 20
+    },
+    {
+      "email": "akshat123@gmail.com",
+      "password": "KLKL))jkjksd00KK000",
+      "addresses": [],
+      "role": "admin",
+      "id": 21
+    },
+    {
+      "email": "akshat123@gmail.com",
+      "password": "OO))000olpoopoxas",
+      "addresses": [],
+      "role": "admin",
+      "id": 22
+    },
+    {
+      "email": "ak@gmail.com",
+      "password": "Akshat@123",
+      "addresses": [],
+      "role": "user",
+      "id": 23
+    },
+    {
+      "email": "akshat123@gmail.com",
+      "password": "Akshat@1234",
+      "addresses": [],
+      "role": "admin",
+      "id": 24
+    },
+    {
+      "email": "WE@gmail.com",
+      "password": "Akshat@123456",
+      "addresses": [],
+      "role": "user",
+      "id": 25
     }
   ],
   "cart": [
     {
-      "id": 5,
-      "title": "Huawei P30",
-      "description": "Huawei’s re-badged P30 Pro New Edition was officially unveiled yesterday in Germany and now the device has made its way to the UK.",
-      "price": 499,
-      "discountPercentage": 10.58,
-      "rating": 4.09,
-      "stock": 32,
-      "brand": "Huawei",
-      "category": "smartphones",
-      "thumbnail": "https://i.dummyjson.com/data/products/5/thumbnail.jpg",
-      "images": [
-        "https://i.dummyjson.com/data/products/5/1.jpg",
-        "https://i.dummyjson.com/data/products/5/2.jpg",
-        "https://i.dummyjson.com/data/products/5/3.jpg"
-      ],
-      "quantity": 1,
-      "user": 13
-    },
-    {
-      "id": 7,
-      "title": "Samsung Galaxy Book",
-      "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
-      "price": 1499,
-      "discountPercentage": 4.15,
-      "rating": 4.25,
-      "stock": 50,
-      "brand": "Samsung",
-      "category": "laptops",
-      "thumbnail": "https://i.dummyjson.com/data/products/7/thumbnail.jpg",
-      "images": [
-        "https://i.dummyjson.com/data/products/7/1.jpg",
-        "https://i.dummyjson.com/data/products/7/2.jpg",
-        "https://i.dummyjson.com/data/products/7/3.jpg",
-        "https://i.dummyjson.com/data/products/7/thumbnail.jpg"
-      ],
-      "quantity": 1,
-      "user": 14
-    },
-    {
-      "id": 1,
-      "title": "iPhone 9",
-      "description": "An apple mobile which is nothing like apple",
-      "price": 549,
-      "discountPercentage": 12.96,
-      "rating": 4.69,
-      "stock": 94,
+      "title": "iPhone X",
+      "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+      "price": 899,
+      "discountPercentage": 17.94,
+      "rating": 4.44,
+      "stock": 34,
       "brand": "Apple",
       "category": "smartphones",
-      "thumbnail": "https://i.dummyjson.com/data/products/1/thumbnail.jpg",
+      "thumbnail": "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
       "images": [
-        "https://i.dummyjson.com/data/products/1/1.jpg",
-        "https://i.dummyjson.com/data/products/1/2.jpg",
-        "https://i.dummyjson.com/data/products/1/3.jpg",
-        "https://i.dummyjson.com/data/products/1/4.jpg",
-        "https://i.dummyjson.com/data/products/1/thumbnail.jpg"
+        "https://i.dummyjson.com/data/products/2/1.jpg",
+        "https://i.dummyjson.com/data/products/2/2.jpg",
+        "https://i.dummyjson.com/data/products/2/3.jpg",
+        "https://i.dummyjson.com/data/products/2/thumbnail.jpg"
       ],
-      "quantity": 1,
-      "user": 15
+      "quantity": 3,
+      "user": 1,
+      "id": 1
     },
     {
-      "id": 10,
-      "title": "HP Pavilion 15-DK1056WM",
-      "description": "HP Pavilion 15-DK1056WM Gaming Laptop 10th Gen Core i5, 8GB, 256GB SSD, GTX 1650 4GB, Windows 10",
-      "price": 1099,
-      "discountPercentage": 6.18,
-      "rating": 4.43,
-      "stock": 89,
-      "brand": "HP Pavilion",
-      "category": "laptops",
-      "thumbnail": "https://i.dummyjson.com/data/products/10/thumbnail.jpeg",
-      "images": [
-        "https://i.dummyjson.com/data/products/10/1.jpg",
-        "https://i.dummyjson.com/data/products/10/2.jpg",
-        "https://i.dummyjson.com/data/products/10/3.jpg",
-        "https://i.dummyjson.com/data/products/10/thumbnail.jpeg"
-      ],
-      "quantity": 1,
-      "user": 16
-    },
-    {
-      "id": 15,
-      "title": "Eau De Perfume Spray",
-      "description": "Genuine  Al-Rehab spray perfume from UAE/Saudi Arabia/Yemen High Quality",
-      "price": 30,
-      "discountPercentage": 10.99,
-      "rating": 4.7,
-      "stock": 105,
-      "brand": "Lord - Al-Rehab",
-      "category": "fragrances",
-      "thumbnail": "https://i.dummyjson.com/data/products/15/thumbnail.jpg",
-      "images": [
-        "https://i.dummyjson.com/data/products/15/1.jpg",
-        "https://i.dummyjson.com/data/products/15/2.jpg",
-        "https://i.dummyjson.com/data/products/15/3.jpg",
-        "https://i.dummyjson.com/data/products/15/4.jpg",
-        "https://i.dummyjson.com/data/products/15/thumbnail.jpg"
-      ],
-      "quantity": 1,
-      "user": 17
-    },
-    {
-      "id": 3,
-      "title": "Samsung Universe 9",
-      "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
-      "price": 1249,
-      "discountPercentage": 15.46,
-      "rating": 4.09,
-      "stock": 36,
-      "brand": "Samsung",
+      "title": "iPhone X",
+      "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+      "price": 89900,
+      "discountPercentage": 17.94,
+      "rating": 0,
+      "stock": 34,
+      "brand": "Apple",
       "category": "smartphones",
-      "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
+      "thumbnail": "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
       "images": [
-        "https://i.dummyjson.com/data/products/3/1.jpg"
+        "https://i.dummyjson.com/data/products/2/1.jpg",
+        "https://i.dummyjson.com/data/products/2/2.jpg",
+        "https://i.dummyjson.com/data/products/2/3.jpg",
+        "https://i.dummyjson.com/data/products/2/thumbnail.jpg"
       ],
       "quantity": 1,
-      "user": 18
+      "user": 25,
+      "id": 2
+    }
+  ],
+  "orders": [
+    {
+      "cartItems": [
+        {
+          "title": "iPhone X",
+          "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+          "price": 899,
+          "discountPercentage": 17.94,
+          "rating": 4.44,
+          "stock": 34,
+          "brand": "Apple",
+          "category": "smartphones",
+          "thumbnail": "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/2/1.jpg",
+            "https://i.dummyjson.com/data/products/2/2.jpg",
+            "https://i.dummyjson.com/data/products/2/3.jpg",
+            "https://i.dummyjson.com/data/products/2/thumbnail.jpg"
+          ],
+          "quantity": 3,
+          "user": 1,
+          "id": 1
+        }
+      ],
+      "totalItems": 3,
+      "subtotal": 2697,
+      "user": {
+        "email": "akshat123@gmail.com",
+        "password": "@Roman222222",
+        "addresses": [
+          {
+            "name": "akshat",
+            "email": "ak@gmail.com",
+            "phone": "901920090",
+            "street": "b-3qwww steert 56",
+            "city": "Ontario",
+            "state": "Canda",
+            "pinCode": "442422"
+          }
+        ],
+        "id": 1
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "akshat",
+        "email": "ak@gmail.com",
+        "phone": "901920090",
+        "street": "b-3qwww steert 56",
+        "city": "Ontario",
+        "state": "Canda",
+        "pinCode": "442422"
+      },
+      "status": "delivered",
+      "id": 1
     },
     {
-      "id": 8,
-      "title": "Microsoft Surface Laptop 4",
-      "description": "Style and speed. Stand out on HD video calls backed by Studio Mics. Capture ideas on the vibrant touchscreen.",
-      "price": 1499,
-      "discountPercentage": 10.23,
-      "rating": 4.43,
-      "stock": 68,
-      "brand": "Microsoft Surface",
-      "category": "laptops",
-      "thumbnail": "https://i.dummyjson.com/data/products/8/thumbnail.jpg",
-      "images": [
-        "https://i.dummyjson.com/data/products/8/1.jpg",
-        "https://i.dummyjson.com/data/products/8/2.jpg",
-        "https://i.dummyjson.com/data/products/8/3.jpg",
-        "https://i.dummyjson.com/data/products/8/4.jpg",
-        "https://i.dummyjson.com/data/products/8/thumbnail.jpg"
+      "cartItems": [
+        {
+          "title": "iPhone X",
+          "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+          "price": 89900,
+          "discountPercentage": 17.94,
+          "rating": 0,
+          "stock": 34,
+          "brand": "Apple",
+          "category": "smartphones",
+          "thumbnail": "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/2/1.jpg",
+            "https://i.dummyjson.com/data/products/2/2.jpg",
+            "https://i.dummyjson.com/data/products/2/3.jpg",
+            "https://i.dummyjson.com/data/products/2/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": 3,
+          "id": 2
+        },
+        {
+          "title": "iPhone 12",
+          "description": "An apple mobile which is nothing like apple",
+          "price": 54900,
+          "discountPercentage": 12.96,
+          "rating": 0,
+          "stock": 94,
+          "brand": "Apple",
+          "category": "smartphones",
+          "thumbnail": "https://i.dummyjson.com/data/products/1/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/1/1.jpg",
+            "https://i.dummyjson.com/data/products/1/2.jpg",
+            "https://i.dummyjson.com/data/products/1/3.jpg",
+            "https://i.dummyjson.com/data/products/1/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": 3,
+          "id": 3
+        },
+        {
+          "title": "Samsung Galaxy Book",
+          "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
+          "price": 1499,
+          "discountPercentage": 4.15,
+          "rating": 4.25,
+          "stock": 50,
+          "brand": "Samsung",
+          "category": "laptops",
+          "thumbnail": "https://i.dummyjson.com/data/products/7/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/7/1.jpg",
+            "https://i.dummyjson.com/data/products/7/2.jpg",
+            "https://i.dummyjson.com/data/products/7/3.jpg",
+            "https://i.dummyjson.com/data/products/7/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": 3,
+          "id": 4
+        }
       ],
-      "quantity": 1,
-      "user": 18
+      "totalItems": 3,
+      "subtotal": 146299,
+      "user": {
+        "email": "ak@gmail.com",
+        "password": "@Ejkla12A",
+        "addresses": [
+          {
+            "name": "akshat",
+            "email": "ak@gmail.com",
+            "phone": "901920090",
+            "street": "b-3qwww steert 56",
+            "city": "Ontario",
+            "state": "Canda",
+            "pinCode": "442422"
+          }
+        ],
+        "role": "admin",
+        "id": 3
+      },
+      "paymentMethod": "card",
+      "selectedAddress": {
+        "name": "akshat",
+        "email": "ak@gmail.com",
+        "phone": "901920090",
+        "street": "b-3qwww steert 56",
+        "city": "Ontario",
+        "state": "Canda",
+        "pinCode": "442422"
+      },
+      "status": "delivered",
+      "id": 2
+    }
+  ],
+  "brands": [
+    {
+      "value": "Apple",
+      "label": "Apple",
+      "checked": false
+    },
+    {
+      "value": "Samsung",
+      "label": "Samsung",
+      "checked": false
+    },
+    {
+      "value": "OPPO",
+      "label": "OPPO",
+      "checked": false
+    },
+    {
+      "value": "Huawei",
+      "label": "Huawei",
+      "checked": false
+    },
+    {
+      "value": "Microsoft Surface",
+      "label": "Microsoft Surface",
+      "checked": false
+    },
+    {
+      "value": "Infinix",
+      "label": "Infinix",
+      "checked": false
+    },
+    {
+      "value": "HP Pavilion",
+      "label": "HP Pavilion",
+      "checked": false
+    },
+    {
+      "value": "Impression of Acqua Di Gio",
+      "label": "Impression of Acqua Di Gio",
+      "checked": false
+    },
+    {
+      "value": "Royal_Mirage",
+      "label": "Royal_Mirage",
+      "checked": false
+    },
+    {
+      "value": "Fog Scent Xpressio",
+      "label": "Fog Scent Xpressio",
+      "checked": false
+    },
+    {
+      "value": "Al Munakh",
+      "label": "Al Munakh",
+      "checked": false
+    },
+    {
+      "value": "Lord - Al-Rehab",
+      "label": "Lord   Al Rehab",
+      "checked": false
+    },
+    {
+      "value": "L'Oreal Paris",
+      "label": "L'Oreal Paris",
+      "checked": false
+    },
+    {
+      "value": "Hemani Tea",
+      "label": "Hemani Tea",
+      "checked": false
+    },
+    {
+      "value": "Dermive",
+      "label": "Dermive",
+      "checked": false
+    },
+    {
+      "value": "ROREC White Rice",
+      "label": "ROREC White Rice",
+      "checked": false
+    },
+    {
+      "value": "Fair & Clear",
+      "label": "Fair & Clear",
+      "checked": false
+    },
+    {
+      "value": "Saaf & Khaas",
+      "label": "Saaf & Khaas",
+      "checked": false
+    },
+    {
+      "value": "Bake Parlor Big",
+      "label": "Bake Parlor Big",
+      "checked": false
+    },
+    {
+      "value": "Baking Food Items",
+      "label": "Baking Food Items",
+      "checked": false
+    },
+    {
+      "value": "fauji",
+      "label": "fauji",
+      "checked": false
+    },
+    {
+      "value": "Dry Rose",
+      "label": "Dry Rose",
+      "checked": false
+    },
+    {
+      "value": "Boho Decor",
+      "label": "Boho Decor",
+      "checked": false
+    },
+    {
+      "value": "Flying Wooden",
+      "label": "Flying Wooden",
+      "checked": false
+    },
+    {
+      "value": "LED Lights",
+      "label": "LED Lights",
+      "checked": false
+    },
+    {
+      "value": "luxury palace",
+      "label": "luxury palace",
+      "checked": false
+    },
+    {
+      "value": "Golden",
+      "label": "Golden",
+      "checked": false
+    },
+    {
+      "value": "Furniture Bed Set",
+      "label": "Furniture Bed Set",
+      "checked": false
+    },
+    {
+      "value": "Ratttan Outdoor",
+      "label": "Ratttan Outdoor",
+      "checked": false
+    },
+    {
+      "value": "Kitchen Shelf",
+      "label": "Kitchen Shelf",
+      "checked": false
+    },
+    {
+      "value": "Multi Purpose",
+      "label": "Multi Purpose",
+      "checked": false
+    },
+    {
+      "value": "AmnaMart",
+      "label": "AmnaMart",
+      "checked": false
+    },
+    {
+      "value": "Professional Wear",
+      "label": "Professional Wear",
+      "checked": false
+    },
+    {
+      "value": "Soft Cotton",
+      "label": "Soft Cotton",
+      "checked": false
+    },
+    {
+      "value": "Top Sweater",
+      "label": "Top Sweater",
+      "checked": false
+    },
+    {
+      "value": "RED MICKY MOUSE..",
+      "label": "RED MICKY MOUSE..",
+      "checked": false
+    },
+    {
+      "value": "Digital Printed",
+      "label": "Digital Printed",
+      "checked": false
+    },
+    {
+      "value": "Ghazi Fabric",
+      "label": "Ghazi Fabric",
+      "checked": false
+    },
+    {
+      "value": "IELGY",
+      "label": "IELGY",
+      "checked": false
+    },
+    {
+      "value": "IELGY fashion",
+      "label": "IELGY fashion",
+      "checked": false
+    },
+    {
+      "value": "Synthetic Leather",
+      "label": "Synthetic Leather",
+      "checked": false
+    },
+    {
+      "value": "Sandals Flip Flops",
+      "label": "Sandals Flip Flops",
+      "checked": false
+    },
+    {
+      "value": "Maasai Sandals",
+      "label": "Maasai Sandals",
+      "checked": false
+    },
+    {
+      "value": "Arrivals Genuine",
+      "label": "Arrivals Genuine",
+      "checked": false
+    },
+    {
+      "value": "Vintage Apparel",
+      "label": "Vintage Apparel",
+      "checked": false
+    },
+    {
+      "value": "FREE FIRE",
+      "label": "FREE FIRE",
+      "checked": false
+    },
+    {
+      "value": "The Warehouse",
+      "label": "The Warehouse",
+      "checked": false
+    },
+    {
+      "value": "Sneakers",
+      "label": "Sneakers",
+      "checked": false
+    },
+    {
+      "value": "Rubber",
+      "label": "Rubber",
+      "checked": false
+    },
+    {
+      "value": "Naviforce",
+      "label": "Naviforce",
+      "checked": false
+    },
+    {
+      "value": "SKMEI 9117",
+      "label": "SKMEI 9117",
+      "checked": false
+    },
+    {
+      "value": "Strap Skeleton",
+      "label": "Strap Skeleton",
+      "checked": false
+    },
+    {
+      "value": "Stainless",
+      "label": "Stainless",
+      "checked": false
+    },
+    {
+      "value": "Eastern Watches",
+      "label": "Eastern Watches",
+      "checked": false
+    },
+    {
+      "value": "Luxury Digital",
+      "label": "Luxury Digital",
+      "checked": false
+    },
+    {
+      "value": "Watch Pearls",
+      "label": "Watch Pearls",
+      "checked": false
+    },
+    {
+      "value": "Bracelet",
+      "label": "Bracelet",
+      "checked": false
+    },
+    {
+      "value": "LouisWill",
+      "label": "LouisWill",
+      "checked": false
+    },
+    {
+      "value": "Copenhagen Luxe",
+      "label": "Copenhagen Luxe",
+      "checked": false
+    },
+    {
+      "value": "Steal Frame",
+      "label": "Steal Frame",
+      "checked": false
+    },
+    {
+      "value": "Darojay",
+      "label": "Darojay",
+      "checked": false
+    },
+    {
+      "value": "Fashion Jewellery",
+      "label": "Fashion Jewellery",
+      "checked": false
+    },
+    {
+      "value": "Cuff Butterfly",
+      "label": "Cuff Butterfly",
+      "checked": false
+    },
+    {
+      "value": "Designer Sun Glasses",
+      "label": "Designer Sun Glasses",
+      "checked": false
+    },
+    {
+      "value": "mastar watch",
+      "label": "mastar watch",
+      "checked": false
+    },
+    {
+      "value": "Car Aux",
+      "label": "Car Aux",
+      "checked": false
+    },
+    {
+      "value": "W1209 DC12V",
+      "label": "W1209 DC12V",
+      "checked": false
+    },
+    {
+      "value": "TC Reusable",
+      "label": "TC Reusable",
+      "checked": false
+    },
+    {
+      "value": "Neon LED Light",
+      "label": "Neon LED Light",
+      "checked": false
+    },
+    {
+      "value": "METRO 70cc Motorcycle - MR70",
+      "label": "METRO 70cc Motorcycle   MR70",
+      "checked": false
+    },
+    {
+      "value": "BRAVE BULL",
+      "label": "BRAVE BULL",
+      "checked": false
+    },
+    {
+      "value": "shock absorber",
+      "label": "shock absorber",
+      "checked": false
+    },
+    {
+      "value": "JIEPOLLY",
+      "label": "JIEPOLLY",
+      "checked": false
+    },
+    {
+      "value": "Xiangle",
+      "label": "Xiangle",
+      "checked": false
+    },
+    {
+      "value": "lightingbrilliance",
+      "label": "lightingbrilliance",
+      "checked": false
+    },
+    {
+      "value": "Ifei Home",
+      "label": "Ifei Home",
+      "checked": false
+    },
+    {
+      "value": "DADAWU",
+      "label": "DADAWU",
+      "checked": false
+    },
+    {
+      "value": "YIOSI",
+      "label": "YIOSI",
+      "checked": false
+    }
+  ],
+  "categories": [
+    {
+      "value": "smartphones",
+      "label": "smartphones",
+      "checked": false
+    },
+    {
+      "value": "laptops",
+      "label": "laptops",
+      "checked": false
+    },
+    {
+      "value": "fragrances",
+      "label": "fragrances",
+      "checked": false
+    },
+    {
+      "value": "skincare",
+      "label": "skincare",
+      "checked": false
+    },
+    {
+      "value": "groceries",
+      "label": "groceries",
+      "checked": false
+    },
+    {
+      "value": "home-decoration",
+      "label": "home decoration",
+      "checked": false
+    },
+    {
+      "value": "furniture",
+      "label": "furniture",
+      "checked": false
+    },
+    {
+      "value": "tops",
+      "label": "tops",
+      "checked": false
+    },
+    {
+      "value": "womens-dresses",
+      "label": "womens dresses",
+      "checked": false
+    },
+    {
+      "value": "womens-shoes",
+      "label": "womens shoes",
+      "checked": false
+    },
+    {
+      "value": "mens-shirts",
+      "label": "mens shirts",
+      "checked": false
+    },
+    {
+      "value": "mens-shoes",
+      "label": "mens shoes",
+      "checked": false
+    },
+    {
+      "value": "mens-watches",
+      "label": "mens watches",
+      "checked": false
+    },
+    {
+      "value": "womens-watches",
+      "label": "womens watches",
+      "checked": false
+    },
+    {
+      "value": "womens-bags",
+      "label": "womens bags",
+      "checked": false
+    },
+    {
+      "value": "womens-jewellery",
+      "label": "womens jewellery",
+      "checked": false
+    },
+    {
+      "value": "sunglasses",
+      "label": "sunglasses",
+      "checked": false
+    },
+    {
+      "value": "automotive",
+      "label": "automotive",
+      "checked": false
+    },
+    {
+      "value": "motorcycle",
+      "label": "motorcycle",
+      "checked": false
+    },
+    {
+      "value": "lighting",
+      "label": "lighting",
+      "checked": false
     }
   ]
 }

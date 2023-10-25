@@ -1,22 +1,22 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate } from "react-router-dom";
-import { useForm } from "react-hook-form"
+import { useForm } from "react-hook-form";
 import { selectLoggedInUser, createUserAsync } from "../authSlice";
 
 const SignUp = () => {
-    const dispatch = useDispatch();
-    const {
-      register,
-      handleSubmit,
-      watch,
-      formState: { errors },
-    } = useForm();
-    const user = useSelector(selectLoggedInUser)
+  const dispatch = useDispatch();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+  const user = useSelector(selectLoggedInUser);
 
   return (
     <>
-    {user && <Navigate to={'/'} replace={true}></Navigate>}
+      {user && <Navigate to={"/"} replace={true}></Navigate>}
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img
@@ -30,10 +30,21 @@ const SignUp = () => {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form noValidate className="space-y-6" onSubmit={handleSubmit((data) => {
-            dispatch(createUserAsync({email: data.email, password: data.password}))
-            console.log(data)
-          })}>
+          <form
+            noValidate
+            className="space-y-6"
+            onSubmit={handleSubmit((data) => {
+              dispatch(
+                createUserAsync({
+                  email: data.email,
+                  password: data.password,
+                  addresses: [],
+                  role: 'user',
+                })
+              );
+              console.log(data);
+            })}
+          >
             <div>
               <label
                 htmlFor="email"
@@ -42,13 +53,13 @@ const SignUp = () => {
                 Email address
               </label>
               <div className="mt-2">
-              <input
+                <input
                   id="email"
-                  {...register('email', {
-                    required: 'email is required',
+                  {...register("email", {
+                    required: "email is required",
                     pattern: {
                       value: /\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/gi,
-                      message: 'email not valid',
+                      message: "email not valid",
                     },
                   })}
                   type="email"
@@ -78,14 +89,14 @@ const SignUp = () => {
                 </div>
               </div>
               <div className="mt-2">
-              <input
+                <input
                   id="password"
-                  {...register('password', {
-                    required: 'password is required',
+                  {...register("password", {
+                    required: "password is required",
                     pattern: {
                       value:
                         /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm,
-                      message: `not a strong password `
+                      message: `not a strong password `,
                     },
                   })}
                   type="password"
@@ -109,7 +120,8 @@ const SignUp = () => {
 
           <p className="mt-10 text-center text-sm text-gray-500">
             Already a member?{" "}
-            <Link to={'/login'}
+            <Link
+              to={"/login"}
               className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
             >
               Login
