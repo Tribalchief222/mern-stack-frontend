@@ -39,7 +39,7 @@ const SignUp = () => {
                   email: data.email,
                   password: data.password,
                   addresses: [],
-                  role: 'user',
+                  role: 'admin',
                 })
               );
               console.log(data);

@@ -19,39 +19,17 @@ import {
   selectAllProducts,
   fetchAllProductAsync,
   fetchProductsByFiltersAsync,
+  selectCategories,
+  selectTotalItems,
+  fetchBrandsAsync,
+  fetchCategoriesAsync,
+  selectBrands,
 } from "../../product/productSlice";
 
 const sortOptions = [
   { name: "Best Rating", sort: "rating", order: "desc", current: false },
   { name: "Price: Low to High", sort: "price", order: "asc", current: false },
   { name: "Price: High to Low", sort: "price", order: "desc", current: false },
-];
-
-const filters = [
-  {
-    id: "brand",
-    name: "Brands",
-    options: [
-      { value: "white", label: "White", checked: false },
-      { value: "beige", label: "Beige", checked: false },
-      { value: "blue", label: "Blue", checked: true },
-      { value: "brown", label: "Brown", checked: false },
-      { value: "green", label: "Green", checked: false },
-      { value: "purple", label: "Purple", checked: false },
-    ],
-  },
-  {
-    id: "category",
-    name: "Category",
-    options: [
-      { value: "smartphones", label: "smartphones", checked: true },
-      { value: "laptops", label: "laptops", checked: false },
-      { value: "fragrances", label: "fragrances", checked: false },
-      { value: "skincare", label: "skincare", checked: false },
-      { value: "groceries", label: "groceries", checked: false },
-      { value: "home-decoration", label: "home decoration", checked: false },
-    ],
-  },
 ];
 
 function classNames(...classes) {
@@ -62,29 +40,74 @@ export default function AdminProductList() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const dispatch = useDispatch();
   const products = useSelector(selectAllProducts);
+  const brands = useSelector(selectBrands);
+  const categories = useSelector(selectCategories);
+  const totalItems = useSelector(selectTotalItems);
   const [filter, setFilter] = useState({});
   const [page, setPage] = useState(1);
+  const [sort, setSort] = useState({});
 
   const ITEMS_PER_PAGE = 10; // Items per page
   const TOTAL_PRODUCTS = products.length; // Total number of products
   const totalPages = Math.ceil(TOTAL_PRODUCTS / ITEMS_PER_PAGE);
 
+  const filters = [
+    {
+      id: "category",
+      name: "Category",
+      options: categories,
+    },
+    {
+      id: "brand",
+      name: "Brands",
+      options: brands,
+    },
+  ];
+
   const handleFilter = (e, section, option) => {
-    const newFilter = { ...filter, [section.id]: option.value };
+    console.log(e.target.checked);
+    const newFilter = { ...filter };
+    if (e.target.checked) {
+      if (newFilter[section.id]) {
+        newFilter[section.id].push(option.value);
+      } else {
+        newFilter[section.id] = [option.value];
+      }
+    } else {
+      const index = newFilter[section.id].findIndex(
+        (el) => el === option.value
+      );
+      newFilter[section.id].splice(index, 1);
+    }
+    console.log({ newFilter });
+
     setFilter(newFilter);
-    dispatch(fetchProductsByFiltersAsync(filter));
-    console.log(section.id, option.value);
   };
 
   const handleSort = (e, option) => {
-    const newFilter = { ...filter, _sort: option.sort, _order: option.order };
-    setFilter(newFilter);
-    dispatch(fetchProductsByFiltersAsync(filter));
+    const sort = { _sort: option.sort, _order: option.order };
+    console.log({ sort });
+    setSort(sort);
   };
 
-  const handlePage = (newPage) => {
-    setPage(newPage);
+  const handlePage = (page) => {
+    console.log({ page });
+    setPage(page);
   };
+
+  useEffect(() => {
+    setPage(1);
+  }, [totalItems, sort]);
+
+  useEffect(() => {
+    const pagination = { _page: page };
+    dispatch(fetchProductsByFiltersAsync({ filter, sort, pagination }));
+  }, [dispatch, filter, sort, page]);
+
+  useEffect(() => {
+    dispatch(fetchBrandsAsync());
+    dispatch(fetchCategoriesAsync());
+  }, []);
 
   // Calculate the start and end index for the current page
   const startIndex = (page - 1) * ITEMS_PER_PAGE;
@@ -92,7 +115,7 @@ export default function AdminProductList() {
   const productsToDisplay = products.slice(startIndex, endIndex);
 
   useEffect(() => {
-    const pagination = { _page: page, _limit: ITEMS_PER_PAGE };
+    const pagination = { _page: page };
     dispatch(fetchAllProductAsync({ filter, pagination }));
   }, [dispatch]);
 
@@ -328,9 +351,12 @@ export default function AdminProductList() {
                                 <input
                                   id={`filter-${section.id}-${optionIdx}`}
                                   name={`${section.id}[]`}
-                                  defaultValue={option.value}
+                                  value={option.value}
                                   type="checkbox"
-                                  defaultChecked={option.checked}
+                                  checked={option.checked}
+                                  onChange={(e) =>
+                                    handleFilter(e, section, option)
+                                  }
                                   className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                                 />
                                 <label
@@ -398,16 +424,25 @@ export default function AdminProductList() {
                                   </p>
                                 </div>
                                 <div>
-                                  <p className="text-sm line-through font-medium text-gray-500">
-                                    ${product.price}
-                                  </p>
-                                  <p className="text-sm font-medium text-gray-900">
-                                    $
-                                    {Math.round(
-                                      product.price *
-                                        (1 - product.discountPercentage / 100)
-                                    )}
-                                  </p>
+                                  {product.stock === 0 ? (
+                                    <p className="text-sm font-medium text-red-600">
+                                      Out of Stock
+                                    </p>
+                                  ) : (
+                                    <>
+                                      <p className="text-sm line-through font-medium text-gray-500">
+                                        ${product.price}
+                                      </p>
+                                      <p className="text-sm font-medium text-gray-900">
+                                        $
+                                        {Math.round(
+                                          product.price *
+                                            (1 -
+                                              product.discountPercentage / 100)
+                                        )}
+                                      </p>
+                                    </>
+                                  )}
                                 </div>
                               </div>
                             </div>
@@ -415,7 +450,7 @@ export default function AdminProductList() {
                           {/* Admin Extra Feature */}
                           <div className="mt-5">
                             <Link
-                              to={`/admin/product-form/edit/${product.id}`} 
+                              to={`/admin/product-form/edit/${product.id}`}
                               className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                             >
                               Edit Product

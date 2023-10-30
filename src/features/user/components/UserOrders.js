@@ -9,8 +9,18 @@ export function UserOrders() {
   const orders = useSelector(selectUserOrders);
 
   useEffect(() => {
+    // Fetch user orders when the component mounts
     dispatch(fetchLoggedInUserOrderAsync(user.id));
-  }, []);
+  }, [dispatch, user.id]);
+
+  const calculateSubtotal = (order) => {
+    return order.cartItems.reduce((total, product) => {
+      console.log("Price:", product.product.price);
+      console.log("Quantity:", product.product.quantity);
+      return total + (product.product.price || 0) * (product.quantity || 0);
+    }, 0);
+  };
+  
 
   return (
     <div>
@@ -26,11 +36,11 @@ export function UserOrders() {
               <div className="flow-root">
                 <ul role="list" className="-my-6 divide-y divide-gray-200">
                   {order.cartItems.map((product) => (
-                    <li key={product.id} className="flex py-6">
+                    <li key={product.product.id} className="flex py-6">
                       <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                         <img
-                          src={product.thumbnail}
-                          alt={product.title}
+                          src={product.product.thumbnail}
+                          alt={product.product.title}
                           className="h-full w-full object-cover object-center"
                         />
                       </div>
@@ -39,13 +49,10 @@ export function UserOrders() {
                         <div>
                           <div className="flex justify-between text-base font-medium text-gray-900">
                             <h3>
-                              <a href={product.href}>{product.title}</a>
+                              <a href={product.product.href}>{product.product.title}</a>
                             </h3>
-                            <p className="ml-4">{product.price}</p>
+                            <p className="ml-4">{product.product.price}</p>
                           </div>
-                          <p className="mt-1 text-sm text-gray-500">
-                            {product.color}
-                          </p>
                         </div>
                         <div className="flex flex-1 items-end justify-between text-sm">
                           <p className="text-gray-500">
@@ -62,7 +69,7 @@ export function UserOrders() {
             <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
               <div className="flex my-2 justify-between text-base font-medium text-gray-900">
                 <p>Subtotal</p>
-                <p>${order.subtotal.toFixed(2)}</p>
+                <p>${calculateSubtotal(order).toFixed(2)}</p>
               </div>
               <div className="flex my-2 justify-between text-base font-medium text-gray-900">
                 <p>Total Items in Cart</p>

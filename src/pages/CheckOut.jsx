@@ -44,7 +44,7 @@ export default function CheckOut() {
       cartItems,
       totalItems: cartItems.length, // Fixed totalItems
       subtotal: calculateSubtotal(cartItems), // Added a function to calculate subtotal
-      user,
+      user:user.id,
       paymentMethod,
       selectedAddress,
       status: "pending",

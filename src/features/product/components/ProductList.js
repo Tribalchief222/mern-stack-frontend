@@ -101,7 +101,7 @@ export default function ProductList() {
   }, [totalItems, sort]);
 
   useEffect(() => {
-    const pagination = { _page: page, _limit: ITEMS_PER_PAGE };
+    const pagination = { _page: page };
     dispatch(fetchProductsByFiltersAsync({ filter, sort, pagination }));
   }, [dispatch, filter, sort, page]);
 
@@ -116,7 +116,7 @@ export default function ProductList() {
   const productsToDisplay = products.slice(startIndex, endIndex);
 
   useEffect(() => {
-    const pagination = { _page: page, _limit: ITEMS_PER_PAGE };
+    const pagination = { _page: page };
     dispatch(fetchAllProductAsync({ filter, pagination }));
   }, [dispatch]);
 
@@ -124,7 +124,11 @@ export default function ProductList() {
     <div className="bg-white">
       <div>
         {/* Mobile filter dialog */}
-        <Transition.Root handleFilter={handleFilter} show={mobileFiltersOpen} as={Fragment}>
+        <Transition.Root
+          handleFilter={handleFilter}
+          show={mobileFiltersOpen}
+          as={Fragment}
+        >
           <Dialog
             as="div"
             className="relative z-40 lg:hidden"
@@ -352,9 +356,12 @@ export default function ProductList() {
                                 <input
                                   id={`filter-${section.id}-${optionIdx}`}
                                   name={`${section.id}[]`}
-                                  defaultValue={option.value}
+                                  value={option.value}
                                   type="checkbox"
-                                  defaultChecked={option.checked}
+                                  checked={option.checked}
+                                  onChange={(e) =>
+                                    handleFilter(e, section, option)
+                                  }
                                   className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                                 />
                                 <label

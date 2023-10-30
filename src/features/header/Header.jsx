@@ -10,12 +10,6 @@ import { useSelector } from "react-redux";
 import { selectItems } from "../cart/cartSlice";
 import { selectLoggedInUser } from "../auth/authSlice";
 
-const navigation = [
-  { name: "Dashboard", link: "/", user: false },
-  { name: "Admin", link: "/admin", admin: true },
-  { name: "Orders", link: "/admin/admin-orders", admin: true },
-];
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
@@ -23,6 +17,16 @@ function classNames(...classes) {
 export default function Header() {
   const items = useSelector(selectItems);
   const user = useSelector(selectLoggedInUser);
+
+  const navigation = [
+    {
+      name: user && user.role === "admin" ? null : "DashBoard",
+      link: user && user.role === "admin" ? null : "/",
+      admin: true,
+    },
+    { name: "Admin", link: "/admin", admin: true },
+    { name: "Orders", link: "/admin/admin-orders", admin: true },
+  ];
 
   const userNavigation = [
     { name: "My Profile", link: "/profile" },
@@ -44,11 +48,12 @@ export default function Header() {
                   <div className="flex items-center">
                     <Link to={"/"}>
                       <div className="flex-shrink-0">
+                        {user.role === "user" ?(
                         <img
                           className="h-8 w-8"
                           src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
                           alt="Your Company"
-                        />
+                        />) : null }
                       </div>{" "}
                     </Link>
                     <div className="hidden md:block">
@@ -125,7 +130,7 @@ export default function Header() {
                                         ? "/orders"
                                         : item.name === "Admin Orders" &&
                                           user.role === "admin"
-                                        ? "/orders"
+                                        ? "/admin/admin-orders"
                                         : item.link
                                     }
                                     className={classNames(

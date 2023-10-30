@@ -37,22 +37,38 @@ export function updateUser(update) {
   });
 }
 
-
 export function checkUser(loginInfo) {
   return new Promise(async (resolve, reject) => {
     const email = loginInfo.email;
     const password = loginInfo.password;
-    const response = await fetch(`http://localhost:8080/users`);
+    try {
+      const response = await fetch(`http://localhost:8080/users/login`, {
+        method: "POST",
+        body: JSON.stringify({ email, password }),
+        headers: { "Content-Type": "application/json" },
+      });
 
-    const data = await response.json();
-    if (data.length) {
-      resolve({ data: data[0] });
-    } else {
-      reject({ message: "User not found" });
+      if (response.status === 200) {
+        // Assuming the server responds with the user's information.
+        const data = await response.json();
+
+        if (data.email === email) {
+          resolve({ data: data });
+        } else {
+          reject({ message: "Invalid credentials" });
+        }
+      } else if (response.status === 404) {
+        // 404 indicates that the user was not found
+        reject({ message: "User not found" });
+      } else {
+        // Handle other response statuses appropriately
+        reject({ message: "Server error" });
+      }
+    } catch (error) {
+      reject({ message: "Error occurred while checking user credentials" });
     }
   });
 }
-
 
 export function signOut(userId) {
   return new Promise(async (resolve) => {

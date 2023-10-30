@@ -53,6 +53,14 @@ const AdminOrders = () => {
     setPage(1);
   };
 
+  const calculateSubtotal = (order) => {
+    return order.cartItems.reduce((total, product) => {
+      console.log("Price:", product.product.price);
+      console.log("Quantity:", product.product.quantity);
+      return total + (product.product.price || 0) * (product.quantity || 0);
+    }, 0);
+  };
+
   const chooseColor = (status) => {
     switch (status) {
       case "pending":
@@ -159,13 +167,13 @@ const AdminOrders = () => {
                               <div className="mr-2">
                                 <img
                                   className="w-6 h-6 mt-2 rounded-full"
-                                  src={item.thumbnail}
+                                  src={item.product.thumbnail}
                                   alt={item.title}
                                 />
                               </div>
                               <span>
-                                {item.title} - {item.quantity} qty -{" "}
-                                {item.price} price/each qty
+                                {item.product.title} - {item.quantity} qty -{" "}
+                                {item.product.price} price/each qty
                               </span>
                             </div>
                           ))}
@@ -173,7 +181,7 @@ const AdminOrders = () => {
 
                       <td className="py-3 px-6 text-center">
                         <div className="flex items-center font-bold justify-center">
-                          $ {order.subtotal}
+                          $ {calculateSubtotal(order).toFixed(2)}
                         </div>
                       </td>
                       <td className="py-3 px-6 text-center">
