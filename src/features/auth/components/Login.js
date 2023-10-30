@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { selectLoggedInUser, checkUserAsync, selectError } from "../authSlice";
 
@@ -14,6 +14,16 @@ const Login = () => {
     formState: { errors },
   } = useForm();
   const user = useSelector(selectLoggedInUser);
+  const navigate = useNavigate(); // Initialize the useNavigate hook
+
+  const handleLogin = async (data) => {
+    try {
+      await dispatch(checkUserAsync({ email: data.email }));
+      navigate('/');
+    } catch (error) {
+      console.log('Login failed:', error);
+    }
+  };
 
   return (
     <>
@@ -34,12 +44,7 @@ const Login = () => {
           <form
             noValidate
             className="space-y-6"
-            onSubmit={handleSubmit((data) => {
-              dispatch(
-                checkUserAsync({ email: data.email, password: data.password })
-              );
-              console.log(data);
-            })}
+            onSubmit={handleSubmit(handleLogin)}
           >
             <div>
               <label

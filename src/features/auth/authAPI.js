@@ -49,26 +49,21 @@ export function checkUser(loginInfo) {
       });
 
       if (response.status === 200) {
-        // Assuming the server responds with the user's information.
         const data = await response.json();
-
         if (data.email === email) {
           resolve({ data: data });
         } else {
           reject({ message: "Invalid credentials" });
         }
-      } else if (response.status === 404) {
-        // 404 indicates that the user was not found
-        reject({ message: "User not found" });
       } else {
-        // Handle other response statuses appropriately
-        reject({ message: "Server error" });
+        reject({ message: "Invalid credentials" });
       }
     } catch (error) {
       reject({ message: "Error occurred while checking user credentials" });
     }
   });
 }
+
 
 export function signOut(userId) {
   return new Promise(async (resolve) => {
