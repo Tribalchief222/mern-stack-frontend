@@ -416,22 +416,6 @@ export default function CheckOut() {
                             </p>
                           </div>
                           <div className="flex flex-1 items-end justify-between text-sm">
-                            <p className="text-gray-500">
-                              Qty
-                              <select
-                                onChange={(e) => handleQuantity(e, product)}
-                                className="ml-4"
-                              >
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                              </select>
-                            </p>
 
                             <div className="flex">
                               <button

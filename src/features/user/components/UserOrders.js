@@ -15,8 +15,6 @@ export function UserOrders() {
 
   const calculateSubtotal = (order) => {
     return order.cartItems.reduce((total, product) => {
-      console.log("Price:", product.product.price);
-      console.log("Quantity:", product.product.quantity);
       return total + (product.product.price || 0) * (product.quantity || 0);
     }, 0);
   };
