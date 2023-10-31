@@ -64,7 +64,7 @@ export function checkUser(loginInfo) {
   });
 }
 
-export function signOut(userId) {
+export function signOut() {
   return new Promise(async (resolve) => {
     resolve({ data: "success" });
   });

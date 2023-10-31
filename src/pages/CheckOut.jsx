@@ -13,7 +13,10 @@ import {
   updateUserAsync,
 } from "../features/auth/authSlice";
 import { useForm } from "react-hook-form";
-import { createOrderAsync, selectCurrentOrder } from "../features/order/orderSlice";
+import {
+  createOrderAsync,
+  selectCurrentOrder,
+} from "../features/order/orderSlice";
 
 export default function CheckOut() {
   const [open, setOpen] = useState(true);
@@ -44,7 +47,8 @@ export default function CheckOut() {
       cartItems,
       totalItems: cartItems.length, // Fixed totalItems
       subtotal: calculateSubtotal(cartItems), // Added a function to calculate subtotal
-      user:user.id,
+      user: user.id,
+      role: user.role,
       paymentMethod,
       selectedAddress,
       status: "pending",
@@ -63,7 +67,10 @@ export default function CheckOut() {
   };
 
   const calculateSubtotal = (items) => {
-    return items.reduce((amount, item) => item.product.price * item.quantity + amount, 0);
+    return items.reduce(
+      (amount, item) => item.product.price * item.quantity + amount,
+      0
+    );
   };
 
   const handleQuantity = (e, product) => {
@@ -80,11 +87,15 @@ export default function CheckOut() {
     0
   );
 
-
   return (
     <>
       {!cartItems.length && <Navigate to={"/"} replace={true}></Navigate>}
-      {currentOrder && <Navigate to={`/order-success/${currentOrder.id}`} replace={true}></Navigate>}
+      {currentOrder && (
+        <Navigate
+          to={`/order-success/${currentOrder.id}`}
+          replace={true}
+        ></Navigate>
+      )}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-5">
           <div className="lg:col-span-3">
@@ -407,7 +418,9 @@ export default function CheckOut() {
                           <div>
                             <div className="flex justify-between text-base font-medium text-gray-900">
                               <h3>
-                                <a href={product.product.href}>{product.title}</a>
+                                <a href={product.product.href}>
+                                  {product.title}
+                                </a>
                               </h3>
                               <p className="ml-4">{product.product.price}</p>
                             </div>
@@ -416,7 +429,6 @@ export default function CheckOut() {
                             </p>
                           </div>
                           <div className="flex flex-1 items-end justify-between text-sm">
-
                             <div className="flex">
                               <button
                                 type="button"

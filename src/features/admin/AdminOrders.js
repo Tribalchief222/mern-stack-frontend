@@ -42,6 +42,12 @@ const AdminOrders = () => {
     setEditableOrderId(-1);
   };
 
+  const handleRoleUpdate = (e, order) => {
+    const updatedOrder = { ...order, role: e.target.value };
+    dispatch(updateOrderAsync(updatedOrder));
+    setEditableOrderId(-1);
+  };
+
   const handlePage = (newPage) => {
     setPage(newPage);
   };
@@ -124,6 +130,7 @@ const AdminOrders = () => {
                     </th>
                     <th className="py-3 px-6 text-center">Shipping Address</th>
                     <th className="py-3 px-6 text-center">Status</th>
+                    <th className="py-3 px-6 text-center">Role</th>
                     <th className="py-3 px-6 text-center">Actions</th>
                   </tr>
                 </thead>
@@ -214,6 +221,25 @@ const AdminOrders = () => {
                           </span>
                         )}
                       </td>
+
+                      <td className="py-3 px-0 text-center">
+                        {order.id === editableOrderId ? (
+                          <select onChange={(e) => handleRoleUpdate(e, order)}>
+                            <option value="user">User</option>
+                            <option value="admin">Admin</option>
+                            <option value="user">User</option>
+                          </select>
+                        ) : (
+                          <span
+                            className={`${chooseColor(
+                              order.role
+                            )} py-1 px-3 rounded-full text-xs`}
+                          >
+                            {order.role}
+                          </span>
+                        )}
+                      </td>
+
                       <td className="py-3 px-0 text-center">
                         <div className="flex item-center justify-center">
                           <div className="w-6 mr-4 transform hover:text-purple-500 hover:scale-120">
